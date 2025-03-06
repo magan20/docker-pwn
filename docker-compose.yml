@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  ubuntu22.04:
+    image: hack:ubuntu22.04
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ubuntu22.04
+    ports:
+      - "10022:22"
+    volumes:
+      - ./workspace:/root/Study
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
